@@ -1,0 +1,32 @@
+﻿@model List<Student>
+<header class="bg-success">
+    <div class="container">
+        <div class="row py-5">
+            <h1 class="my-5 text-light">@((ViewBag.Group).Name)</h1>
+            <div class="text-light">
+                <p><b>Muellim:</b> @((ViewBag.Teacher).Teacher.Name)</p>
+                <p><b>Telebe sayi:</b> @((ViewBag.StudentCount))</p>
+                <p><b>Qrup Sahesi:</b> @((ViewBag.Group).Category.Name)</p>
+
+
+            </div>
+        </div>
+    </div>
+</header>
+<section>
+    <div class="container">
+        <div class="row py-5">
+            @foreach (Student item in @Model)
+            {
+                <div class="mypadding mb-3 card col-lg-3">
+                    <img class="card-img-top m-auto" src="~/assets/img/Upload/Student/@item.Image" style="width:90%;">
+                    <div class="card-body text-center">
+                        <p class="card-text">@item.Email</p>
+                        <p class="card-text">@item.FullName</p>
+                        <a asp-controller="Student" asp-action="Info" asp-route-id="@item.Id" class="btn btn-success">Go somewhere</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

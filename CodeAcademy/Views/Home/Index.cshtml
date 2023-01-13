@@ -1,0 +1,146 @@
+﻿@model HomeViewModel
+<header>
+    <div class="owl-carousel owl-theme header-carousel">
+        @foreach (Header slide in @Model.Headers)
+        {
+            <div style="background-color: @slide.BackgroundColor;">
+                <div class="container">
+                    <div class="row py-5 align-items-center" style="height: 100vh;background-color: @slide.BackgroundColor; height: 100vh;">
+                        <div class="col-lg-6">
+                            <div style="color: @slide.FontColor;">
+                                <h1>@slide.Title</h1>
+                                <p>@slide.Subtitle</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        }
+    </div>
+</header>
+<section id="teachingAreas">
+    <div class="container">
+        <div class="row py-5 align-items-center" style="height: 100vh;">
+            <div class="col-md-6">
+                <h1>Lorem, ipsum.</h1>
+                <img src="~/assets/img/sep-line.png" alt="">
+                <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates, error qui! Quas
+                    natus quibusdam et? Earum veritatis illum rem debitis, ad eaque eos illo, pariatur
+                    molestiae odit nulla facilis eius numquam quam quos praesentium. Maiores quis aliquam
+                    ducimus
+                    voluptatem quaerat fuga excepturi eveniet quia ipsa culpa sed aliquid, dolorum eius?
+                </p>
+            </div>
+            <div class="col-md-6">
+                <div class="d-flex flex-wrap">
+                    @foreach (Category item in @Model.Categorys)
+                    {
+                        <div class="col-md-6">
+                            <img src="~/assets/img/Upload/category/@item.Icon" class="w-25" alt="">
+                            <h5>@item.Name</h5>
+                        </div>
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="whyUs">
+    <div class="container">
+        <div class="row py-5 align-items-center">
+            <div class="col-md-9">
+                <h1>Lorem, ipsum.</h1>
+                <img src="~/assets/img/sep-line.png" alt="">
+                <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates, error qui! Quas
+                    natus quibusdam et? Earum veritatis illum rem debitis, ad eaque eos illo, pariatur
+                    molestiae odit nulla facilis eius numquam quam quos praesentium. Maiores quis aliquam
+                    ducimus
+                    voluptatem quaerat fuga excepturi eveniet quia ipsa culpa sed aliquid, dolorum eius?
+                </p>
+            </div>
+            <div class="d-flex flex-wrap justify-content-between">
+                @foreach (WhyUs item in @Model.whyUs)
+                {
+                    <div class="col-md-6 d-flex my-3">
+                        <div class="col-md-4"><img class="w-100 pe-3" src="~/assets/img/Upload/WhyUs/@item.Image"></div>
+                        <div class="col-md-8">
+                            <h4>@item.Title</h4>
+                            <p>
+                                @item.Subtitle
+                            </p>
+                            <a href="#" class="text-decoration-none text-dark">Read more</a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+<section id="contactUs" style="background-color: gainsboro;">
+    <div class="container">
+        <div class="row py-5 align-items-center" style="height: 80vh;">
+            <div class="col-md-6">
+                <h1>Lorem, ipsum.</h1>
+                <img src="./assets/img/sep-line.png" alt="">
+                <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates, error qui! Quas
+                    natus quibusdam et? Earum veritatis illum rem debitis, ad eaque eos illo, pariatur
+                    molestiae odit nulla facilis eius numquam quam quos praesentium. Maiores quis aliquam
+                    ducimus
+                    voluptatem quaerat fuga excepturi eveniet quia ipsa culpa sed aliquid, dolorum eius?
+                </p>
+            </div>
+            <div class="col-md-6">
+                <div class="d-flex flex-wrap">
+                    <form class="row g-3" asp-controller="Message" asp-action="Add" method="post">
+                        <div class="col-md-6 px-2">
+                            <div class="input-group mb-3">
+                                <input type="text" name="name" class="form-control shadow-none" placeholder="Ad">
+                            </div>
+                        </div>
+                        <div class="col-md-6 px-2">
+                            <div class="input-group mb-3">
+                                <input type="text" name="surname" class="form-control shadow-none" placeholder="Soyad">
+                            </div>
+                        </div>
+                        <div class="col-3 px-2">
+                            <select class="form-select shadow-none" name="LocalCode" aria-label="Default select example">
+                                <option value="050">+99450</option>
+                                <option value="051">+99451</option>
+                                <option value="055">+99455</option>
+                                <option value="070">+99470</option>
+                                <option value="077">+99477</option>
+                                <option value="099">+99499</option>
+                            </select>
+                        </div>
+                        <div class="col-9 px-2">
+                            <div class="input-group mb-3">
+                                <input type="text" name="Number" class="form-control shadow-none" placeholder="Nomrə">
+                            </div>
+                        </div>
+                        <div class="col-md-12 px-2">
+                            <select class="form-select shadow-none" name="EducationCategory" aria-label="Default select example">
+                                @foreach (Category item in @Model.Categorys)
+                                {
+                                    <option value="@item.Name">@item.Name</option>
+                                }
+                            </select>
+                        </div>
+                        <div>
+                            <button class="button btn btn-success col-12" type="submit">Müraciet et</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    $('.button').on("click", function () {
+        alert(@(TempData["messageAdded"]))
+    })
+</script>

@@ -1,0 +1,33 @@
+﻿@model GroupViewModel
+<header class="bg-success">
+    <div class="container">
+        <div class="row py-5">
+            <h1 class="my-5 text-light">Group</h1>
+        </div>
+    </div>
+</header>
+<section>
+    <div class="container">
+        <div class="row py-5">
+            <div class="d-flex justify-content-around">
+                @foreach (Category item in @Model.Categories)
+                {
+                    <button id="filter-button" class="text-center" data-filter="category-@item.Id">@item.Name</button>
+                }
+            </div>
+        </div>
+        <div class="row py-5">
+            @foreach (Group item in @Model.Groups)
+            {
+                <div class="mypadding category mb-3 card col-lg-3 category-@item.Category.Id">
+                    <img class="card-img-top m-auto" src="./assets/img/upload/Category/@item.Category.Icon" style="width:50%;">
+                    <div class="card-body text-center">
+                        <p class="card-text">@item.Teacher.Name</p>
+                        <p class="card-text">@item.Name</p>
+                        <a asp-controller="Student" asp-action="Index" asp-route-id="@item.Id" class="btn btn-success">Go somewhere</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

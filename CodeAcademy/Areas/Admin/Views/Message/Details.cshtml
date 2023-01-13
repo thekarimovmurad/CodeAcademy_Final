@@ -1,0 +1,10 @@
+﻿@model Message
+<div class="row">
+    <div class="col-md-8">
+        <h4><b>Fullname:</b> @Model.Surname @Model.Name</h4>
+        <h4><b>Number:</b> @Model.Number</h4>
+        <h4><b>Date:</b> @Model.MessageDate.ToString("dd/MM/yyyy")</h4>
+        <h4><b>Department:</b> @Model.EducationCategory</h4>
+        <a asp-action="Index" class="btn btn-primary">Go Back</a>
+    </div>
+</div>

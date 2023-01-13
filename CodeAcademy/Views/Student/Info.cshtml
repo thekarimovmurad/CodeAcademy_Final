@@ -1,0 +1,17 @@
+﻿@model Student    
+<header class="bg-success">
+    <div class="container">
+        <div class="row py-5 align-items-center" style="height: 90vh;">
+            <div class="col-lg-6"><img src="~/assets/img/Upload/Student/@Model.Image" class="w-75"></div>
+            <div class="col-lg-6">
+                <div class="text-light">
+                    <h1>@Model.FullName</h1>
+                    <p><b>Email:</b> @Model.Email</p>
+                    <p><b>Group:</b> @Model.Group.Name</p>
+                    <p><b>Müəllim:</b> @Model.Group.Teacher.Name</p>
+                    <p><b>Qrup Sahesi:</b> @Model.Group.Category.Name</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
